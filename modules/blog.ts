@@ -6,6 +6,7 @@ import MarkdownItAnchor from 'markdown-it-anchor'
 import { defu } from 'defu'
 import { read } from 'gray-matter'
 import { array, safeParse } from 'valibot'
+import { Feed } from 'feed'
 import {
   AuthorSchema,
   RawBlogPostSchema,
@@ -159,6 +160,7 @@ export default defineNuxtModule({
     const resolver = createResolver(import.meta.url)
     const blogDir = resolver.resolve('../app/pages/blog')
     const blogImagesDir = resolver.resolve('../public/blog/avatar')
+    const publicDir = resolver.resolve('../public')
     const resolveAvatars = !nuxt.options._prepare
 
     nuxt.options.extensions.push('.md')
@@ -221,5 +223,52 @@ export default defineNuxtModule({
         }
       }
     }
+
+    // Generate content for RSS, Atom and JSON feeds
+    const feed = new Feed({
+      title: 'Blog - npmx',
+      description: 'a fast, modern browser for the npm registry',
+      id: 'https://npmx.dev/',
+      link: 'https://npmx.dev/',
+      language: 'en',
+      image: 'https://npmx.dev/logo.svg',
+      favicon: 'https://npmx.dev/favicon.ico',
+      feedLinks: {
+        rss: 'https://npmx.dev/rss.xml',
+        atom: 'https://npmx.dev/atom.xml',
+        json: 'https://npmx.dev/feed.json',
+      },
+    })
+
+    allPosts
+      .filter(post => !post.draft)
+      .forEach(post => {
+        feed.addItem({
+          title: post.title,
+          id: new URL(post.path, 'https://npmx.dev').toString(),
+          link: new URL(post.path, 'https://npmx.dev').toString(),
+          description: post.description,
+          author: post.authors.map(author => ({
+            name: author.name,
+            link: author.profileUrl ?? undefined,
+            // author.avatar is a relative URL - make it absolute to work in feed readers
+            avatar: author.avatar
+              ? new URL(author.avatar, 'https://npmx.dev').toString()
+              : undefined,
+          })),
+          date: new Date(post.date),
+          image: post.image,
+        })
+      })
+
+    const rssPath = 'rss.xml'
+    const atomPath = 'atom.xml'
+    const jsonFeedPath = 'feed.json'
+
+    await Promise.all([
+      writeFile(join(publicDir, rssPath), feed.rss2()),
+      writeFile(join(publicDir, atomPath), feed.atom1()),
+      writeFile(join(publicDir, jsonFeedPath), feed.json1()),
+    ])
   },
 })

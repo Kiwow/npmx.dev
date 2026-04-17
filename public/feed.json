@@ -1,0 +1,35 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "Blog - npmx",
+  "home_page_url": "https://npmx.dev/",
+  "feed_url": "https://npmx.dev/feed.json",
+  "description": "a fast, modern browser for the npm registry",
+  "icon": "https://npmx.dev/logo.svg",
+  "items": [
+    {
+      "id": "https://npmx.dev/blog/release/0.8",
+      "content_html": "Today we're releasing npmx 0.8 – including a new command palette and a lot of other features.",
+      "url": "https://npmx.dev/blog/release/0.8",
+      "title": "npmx 0.8: npm at your fingertips",
+      "image": "https://npmx.dev/blog/og/release-0_8.png",
+      "date_modified": "2026-04-08T00:00:00.000Z",
+      "author": {
+        "name": "Alex Savelyev",
+        "url": "https://bsky.app/profile/alexdln.com",
+        "avatar": "https://npmx.dev/blog/avatar/fddf886ba49fb30b34a112b568bcde6ab69dcc98338f65078829f2669a16ab4d.png"
+      }
+    },
+    {
+      "id": "https://npmx.dev/blog/alpha-release",
+      "content_html": "Today we're releasing the alpha of npmx.dev – a fast, modern browser for the npm registry, built in the open by a growing community.",
+      "url": "https://npmx.dev/blog/alpha-release",
+      "title": "Announcing npmx: a fast, modern browser for the npm registry",
+      "date_modified": "2026-03-03T00:00:00.000Z",
+      "author": {
+        "name": "Daniel Roe",
+        "url": "https://bsky.app/profile/danielroe.dev",
+        "avatar": "https://npmx.dev/blog/avatar/0709998e7d231e3c275df3f594b0f66a3f860369e6d8de5cd09247295e939d66.png"
+      }
+    }
+  ]
+}

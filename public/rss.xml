@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Blog - npmx</title>
+        <link>https://npmx.dev/</link>
+        <description>a fast, modern browser for the npm registry</description>
+        <lastBuildDate>Fri, 17 Apr 2026 22:49:22 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <image>
+            <title>Blog - npmx</title>
+            <url>https://npmx.dev/logo.svg</url>
+            <link>https://npmx.dev/</link>
+        </image>
+        <atom:link href="https://npmx.dev/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[npmx 0.8: npm at your fingertips]]></title>
+            <link>https://npmx.dev/blog/release/0.8</link>
+            <guid isPermaLink="false">https://npmx.dev/blog/release/0.8</guid>
+            <pubDate>Wed, 08 Apr 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Today we're releasing npmx 0.8 – including a new command palette and a lot of other features.]]></description>
+            <author>Alex Savelyev</author>
+            <author>Philippe Serhal</author>
+            <author>Matias Capeletto</author>
+            <enclosure url="https://npmx.dev/blog/og/release-0_8.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Announcing npmx: a fast, modern browser for the npm registry]]></title>
+            <link>https://npmx.dev/blog/alpha-release</link>
+            <guid isPermaLink="false">https://npmx.dev/blog/alpha-release</guid>
+            <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Today we're releasing the alpha of npmx.dev – a fast, modern browser for the npm registry, built in the open by a growing community.]]></description>
+            <author>Daniel Roe</author>
+            <author>Salma Alam-Naylor</author>
+            <author>Matias Capeletto</author>
+        </item>
+    </channel>
+</rss>
