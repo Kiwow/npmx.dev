@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://npmx.dev/</id>
     <title>Blog - npmx</title>
-    <updated>2026-04-17T23:00:46.667Z</updated>
+    <updated>2026-04-17T23:02:13.224Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://npmx.dev/"/>
     <link rel="self" href="https://npmx.dev/atom.xml"/>
