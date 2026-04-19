@@ -21,10 +21,10 @@ test.describe('Blog feeds', () => {
       test(feed.name, async ({ page, goto }) => {
         await goto('/blog', { waitUntil: 'domcontentloaded' })
 
-        const rssLocator = page.locator(`css=link[rel='alternate'][type='${feed.contentType}']`)
-        await expect(rssLocator).toHaveAttribute('href')
+        const locator = page.locator(`link[rel='alternate'][type='${feed.contentType}']`).first()
+        await expect(locator).toHaveAttribute('href')
 
-        const href = await rssLocator.getAttribute('href')
+        const href = await locator.getAttribute('href')
         expect(href).not.toBeNull()
 
         const { contentType, cors } = await page.evaluate(async href => {
