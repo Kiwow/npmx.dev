@@ -9,7 +9,7 @@ test.describe('Blog feeds', () => {
       },
       {
         name: 'Atom',
-        contentType: 'application/rss+atom',
+        contentType: 'application/atom+xml',
       },
       {
         name: 'JSON Feed',
@@ -27,16 +27,25 @@ test.describe('Blog feeds', () => {
         const href = await locator.getAttribute('href')
         expect(href).not.toBeNull()
 
-        const { contentType, cors } = await page.evaluate(async href => {
-          const response = await fetch(href)
+        if (typeof href !== 'string') {
+          return
+        }
+
+        // href is an absolute link
+        expect(href.slice(0, 16)).toBe('https://npmx.dev')
+
+        const { contentType, corsHeader } = await page.evaluate(async href => {
+          // Fetch the same path as in the alternate link
+          const url = href.slice(16)
+          const response = await fetch(url)
           return {
             contentType: response.headers.get('Content-Type'),
-            cors: response.headers.get('Access-Control-Allow-Origin'),
+            corsHeader: response.headers.get('Access-Control-Allow-Origin'),
           }
-        }, href as string)
+        }, href)
 
         expect(contentType).toBe(feed.contentType)
-        expect(cors).toBe('*')
+        expect(corsHeader).toBe('*')
       })
     }
   })
