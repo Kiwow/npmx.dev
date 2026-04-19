@@ -192,6 +192,9 @@ export default defineNuxtConfig({
     '/recharging': { prerender: true },
     '/pds': { isr: 86400 }, // revalidate daily
     '/blog/**': { prerender: true },
+    '/rss.xml': { prerender: true },
+    '/atom.xml': { prerender: true },
+    '/feed.json': { prerender: true },
     // proxy for insights
     '/_v/script.js': {
       proxy: 'https://npmx.dev/_vercel/insights/script.js',
