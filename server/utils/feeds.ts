@@ -4,7 +4,7 @@ import { posts } from '#blog/posts'
 let feed: Feed | undefined = undefined
 
 /**
- * Lazily creates and returns object that serializes into RSS, Atom and JSON
+ * Creates, caches and returns object that serializes into RSS, Atom and JSON
  * feeds to be served on the website.
  *
  * @returns feed object that serializes into different feed formats

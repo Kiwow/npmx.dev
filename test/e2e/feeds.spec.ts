@@ -45,6 +45,8 @@ test.describe('Blog feeds', () => {
         }, href)
 
         expect(contentType).toBe(feed.contentType)
+        // Make sure feeds are available to browser-based readers, see
+        // https://www.blogsareback.com/guides/enable-cors
         expect(corsHeader).toBe('*')
       })
     }
