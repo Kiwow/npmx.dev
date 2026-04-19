@@ -192,9 +192,18 @@ export default defineNuxtConfig({
     '/recharging': { prerender: true },
     '/pds': { isr: 86400 }, // revalidate daily
     '/blog/**': { prerender: true },
-    '/rss.xml': { prerender: true },
-    '/atom.xml': { prerender: true },
-    '/feed.json': { prerender: true },
+    '/rss.xml': {
+      prerender: true,
+      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/rss+xml' },
+    },
+    '/atom.xml': {
+      prerender: true,
+      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/atom+xml' },
+    },
+    '/feed.json': {
+      prerender: true,
+      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/feed+json' },
+    },
     // proxy for insights
     '/_v/script.js': {
       proxy: 'https://npmx.dev/_vercel/insights/script.js',
