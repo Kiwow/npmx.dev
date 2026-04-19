@@ -1,10 +1,6 @@
 import { Feed } from 'feed'
 import { posts } from '#blog/posts'
 
-export const rssPath = '/rss.xml'
-export const atomPath = '/atom.xml'
-export const jsonPath = '/feed.json'
-
 let feed: Feed | undefined = undefined
 
 export function getFeed(): Feed {
@@ -14,7 +10,7 @@ export function getFeed(): Feed {
   return feed
 }
 
-function generateFeed(): Feed {
+function generateFeed() {
   // Generate content for RSS, Atom and JSON feeds
   const feed = new Feed({
     title: 'Blog - npmx',
@@ -25,9 +21,9 @@ function generateFeed(): Feed {
     image: 'https://npmx.dev/logo.svg',
     favicon: 'https://npmx.dev/favicon.ico',
     feedLinks: {
-      rss: new URL(rssPath, 'https://npmx.dev').toString(),
-      atom: new URL(atomPath, 'https://npmx.dev').toString(),
-      json: new URL(jsonPath, 'https://npmx.dev').toString(),
+      rss: 'https://npmx.dev/rss.xml',
+      atom: 'https://npmx.dev/atom.xml',
+      json: 'https://npmx.dev/feed.json',
     },
   })
 
