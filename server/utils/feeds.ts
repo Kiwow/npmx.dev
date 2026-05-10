@@ -20,7 +20,7 @@ export function getFeed() {
     },
   })
 
-  for (const post of posts.filter(post => !post.draft)) {
+  for (const post of posts.filter(p => !p.draft)) {
     feed.addItem({
       title: post.title,
       id: makeUrlAbsolute(post.path),

@@ -34,9 +34,9 @@ test.describe('Blog feeds', () => {
         // href is an absolute link
         expect(href.slice(0, 16)).toBe('https://npmx.dev')
 
-        const { contentType, corsHeader } = await page.evaluate(async href => {
+        const { contentType, corsHeader } = await page.evaluate(async feedHref => {
           // Fetch the same path as in the alternate link
-          const url = href.slice(16)
+          const url = feedHref.slice(16)
           const response = await fetch(url)
           return {
             contentType: response.headers.get('Content-Type'),
