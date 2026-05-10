@@ -7,7 +7,7 @@ export function getFeed() {
   // Generate content for RSS, Atom and JSON feeds
   const feed = new Feed({
     title: 'Blog - npmx',
-    description: 'a fast, modern browser for the npm registry',
+    description: 'A fast, modern browser for the npm registry',
     id: 'https://npmx.dev/',
     link: 'https://npmx.dev/',
     language: 'en',
