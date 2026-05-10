@@ -248,7 +248,7 @@ export default defineNuxtConfig({
         target: 'es2024',
         // HACK: Excluding node_modules is the default. Here, we exempt
         // .cache/nuxt/.nuxt/blog/posts.ts from that so that #blog/posts can be
-        // imported, parsed and executed as TS in server\utils\feeds.ts by esbuild
+        // imported, parsed and executed as TS in server/utils/feeds.ts by esbuild
         exclude: /node_modules\/(?!\.cache\/nuxt\/\.nuxt\/blog\/posts\.ts)/,
       },
     },
