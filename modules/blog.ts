@@ -211,6 +211,9 @@ export default defineNuxtModule({
     })
 
     nuxt.options.alias['#blog/posts'] = join(nuxt.options.buildDir, 'blog/posts')
+    console.log(
+      `[blog module] buildDir=${nuxt.options.buildDir} → #blog/posts alias=${nuxt.options.alias['#blog/posts']}`,
+    )
 
     // Add X-Robots-Tag header for draft posts to prevent indexing
     for (const post of allPosts) {
