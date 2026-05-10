@@ -1,6 +1,8 @@
 import { Feed } from 'feed'
 import { posts } from '#blog/posts'
 
+const makeUrlAbsolute = (url: string) => new URL(url, 'https://npmx.dev').toString()
+
 export function getFeed() {
   // Generate content for RSS, Atom and JSON feeds
   const feed = new Feed({
@@ -21,17 +23,17 @@ export function getFeed() {
   for (const post of posts.filter(post => !post.draft)) {
     feed.addItem({
       title: post.title,
-      id: new URL(post.path, 'https://npmx.dev').toString(),
-      link: new URL(post.path, 'https://npmx.dev').toString(),
+      id: makeUrlAbsolute(post.path),
+      link: makeUrlAbsolute(post.path),
       description: post.description,
       author: post.authors.map(author => ({
         name: author.name,
         link: author.profileUrl ?? undefined,
         // author.avatar is a relative URL - make it absolute to work in feed readers
-        avatar: author.avatar ? new URL(author.avatar, 'https://npmx.dev').toString() : undefined,
+        avatar: author.avatar ? makeUrlAbsolute(author.avatar) : undefined,
       })),
       date: new Date(post.date),
-      image: post.image,
+      image: post.image ? makeUrlAbsolute(post.image) : undefined,
     })
   }
 
