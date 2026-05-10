@@ -1,22 +1,7 @@
 import { Feed } from 'feed'
 import { posts } from '#blog/posts'
 
-let feed: Feed | undefined = undefined
-
-/**
- * Creates, caches and returns object that serializes into RSS, Atom and JSON
- * feeds to be served on the website.
- *
- * @returns feed object that serializes into different feed formats
- */
-export function getFeed(): Feed {
-  if (!feed) {
-    feed = generateFeed()
-  }
-  return feed
-}
-
-function generateFeed() {
+export function getFeed() {
   // Generate content for RSS, Atom and JSON feeds
   const feed = new Feed({
     title: 'Blog - npmx',
