@@ -4,6 +4,8 @@ import { posts } from '#blog/posts'
 const makeUrlAbsolute = (url: string) => new URL(url, 'https://npmx.dev').toString()
 
 export function getFeed() {
+  const visiblePosts = posts.filter(p => !p.draft)
+
   // Generate content for RSS and Atom
   const feed = new Feed({
     title: 'Blog - npmx',
@@ -11,6 +13,7 @@ export function getFeed() {
     id: 'https://npmx.dev/blog',
     link: 'https://npmx.dev/blog',
     language: 'en',
+    updated: visiblePosts[0] ? new Date(visiblePosts[0].date) : undefined,
     image: 'https://npmx.dev/logo.svg',
     favicon: 'https://npmx.dev/favicon.ico',
     feedLinks: {
@@ -19,7 +22,7 @@ export function getFeed() {
     },
   })
 
-  for (const post of posts.filter(p => !p.draft)) {
+  for (const post of visiblePosts) {
     feed.addItem({
       title: post.title,
       id: makeUrlAbsolute(post.path),

@@ -234,9 +234,11 @@ export default defineNuxtConfig({
     '/pds': { isr: 86400 }, // revalidate daily
     '/blog/**': { prerender: true },
     '/blog/rss.xml': {
+      prerender: true,
       headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/rss+xml' },
     },
     '/blog/atom.xml': {
+      prerender: true,
       headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/atom+xml' },
     },
     '/noodles/**': { prerender: true },
